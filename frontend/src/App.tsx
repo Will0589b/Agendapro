@@ -1,122 +1,154 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {
+  useEffect,
+  useState,
+} from "react";
+import type { Session } from "@supabase/supabase-js";
+
+import "./App.css";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import Dashboard from "./pages/Dashboard";
+
+import { supabase } from "./lib/supabase";
+
+type ScreenMode =
+  | "login"
+  | "register"
+  | "forgot"
+  | "reset";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mode, setMode] =
+    useState<ScreenMode>("login");
+
+  const [session, setSession] =
+    useState<Session | null>(null);
+
+  const [checkingSession, setCheckingSession] =
+    useState(true);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session: currentSession },
+      } = await supabase.auth.getSession();
+
+      setSession(currentSession);
+      setCheckingSession(false);
+    };
+
+    checkSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(
+      (event, currentSession) => {
+        setSession(currentSession);
+
+        if (event === "PASSWORD_RECOVERY") {
+          setMode("reset");
+        }
+
+        if (event === "SIGNED_OUT") {
+          setMode("login");
+        }
+      }
+    );
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    const { error } =
+      await supabase.auth.signOut();
+
+    if (error) {
+      console.error(
+        "Erro ao sair da conta:",
+        error.message
+      );
+    }
+  };
+
+  if (checkingSession) {
+    return (
+      <main className="login-page">
+        <div className="auth-loading">
+          <span className="spinner"></span>
+        </div>
+      </main>
+    );
+  }
+
+  if (session && mode !== "reset") {
+    return (
+      <Dashboard
+        userEmail={
+          session.user.email ??
+          "Usuário AgendaPro"
+        }
+        onLogout={handleLogout}
+      />
+    );
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="login-page">
+      <div className="bubble bubble-1"></div>
+      <div className="bubble bubble-2"></div>
+      <div className="bubble bubble-3"></div>
+      <div className="bubble bubble-4"></div>
+
+      <section className="login-card">
+        {mode === "login" && (
+          <Login
+            onRegister={() =>
+              setMode("register")
+            }
+            onForgotPassword={() =>
+              setMode("forgot")
+            }
+          />
+        )}
+
+        {mode === "register" && (
+          <Register
+            onBackToLogin={() =>
+              setMode("login")
+            }
+          />
+        )}
+
+        {mode === "forgot" && (
+          <ForgotPassword
+            onBackToLogin={() =>
+              setMode("login")
+            }
+          />
+        )}
+
+        {mode === "reset" && (
+          <ResetPassword
+            onBackToLogin={async () => {
+              window.history.replaceState(
+                {},
+                "",
+                "/"
+              );
+
+              await supabase.auth.signOut();
+              setMode("login");
+            }}
+          />
+        )}
       </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;

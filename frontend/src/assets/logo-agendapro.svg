@@ -1,0 +1,62 @@
+<svg
+  width="56"
+  height="56"
+  viewBox="0 0 56 56"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      id="agendaGradient"
+      x1="8"
+      y1="8"
+      x2="48"
+      y2="48"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#2563EB" />
+      <stop offset="1" stop-color="#14B8A6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Barra superior -->
+  <rect
+    x="13"
+    y="12"
+    width="31"
+    height="7"
+    rx="3.5"
+    transform="rotate(-24 13 12)"
+    fill="url(#agendaGradient)"
+  />
+
+  <!-- Barra central -->
+  <rect
+    x="15"
+    y="25"
+    width="28"
+    height="7"
+    rx="3.5"
+    transform="rotate(-24 15 25)"
+    fill="url(#agendaGradient)"
+  />
+
+  <!-- Barra inferior -->
+  <rect
+    x="17"
+    y="38"
+    width="24"
+    height="7"
+    rx="3.5"
+    transform="rotate(-24 17 38)"
+    fill="url(#agendaGradient)"
+  />
+
+  <!-- Ponto -->
+  <circle
+    cx="46"
+    cy="42"
+    r="4.5"
+    fill="#14B8A6"
+  />
+</svg>
