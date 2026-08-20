@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   ArrowRight,
   Bell,
@@ -15,6 +17,9 @@ import {
 } from "lucide-react";
 
 import BrandLogo from "../components/BrandLogo";
+import Clients from "./Clients";
+import Services from "./Services";
+
 import "./Dashboard.css";
 
 type DashboardProps = {
@@ -22,10 +27,18 @@ type DashboardProps = {
   onLogout: () => Promise<void>;
 };
 
+type DashboardSection =
+  | "overview"
+  | "clients"
+  | "services";
+
 function Dashboard({
   userEmail,
   onLogout,
 }: DashboardProps) {
+  const [activeSection, setActiveSection] =
+    useState<DashboardSection>("overview");
+
   const currentDate = new Intl.DateTimeFormat(
     "pt-BR",
     {
@@ -53,7 +66,14 @@ function Dashboard({
         <nav className="dashboard-navigation">
           <button
             type="button"
-            className="dashboard-nav-item active"
+            className={`dashboard-nav-item ${
+              activeSection === "overview"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              setActiveSection("overview")
+            }
           >
             <LayoutDashboard size={20} />
             <span>Visão geral</span>
@@ -69,7 +89,14 @@ function Dashboard({
 
           <button
             type="button"
-            className="dashboard-nav-item"
+            className={`dashboard-nav-item ${
+              activeSection === "clients"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              setActiveSection("clients")
+            }
           >
             <Users size={20} />
             <span>Clientes</span>
@@ -77,7 +104,14 @@ function Dashboard({
 
           <button
             type="button"
-            className="dashboard-nav-item"
+            className={`dashboard-nav-item ${
+              activeSection === "services"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              setActiveSection("services")
+            }
           >
             <BriefcaseBusiness size={20} />
             <span>Serviços</span>
@@ -115,205 +149,255 @@ function Dashboard({
       </aside>
 
       <main className="dashboard-content">
-        <header className="dashboard-header">
-          <div className="dashboard-welcome">
-            <p className="dashboard-date">
-              {currentDate}
-            </p>
+        {activeSection === "overview" ? (
+          <>
+            <header className="dashboard-header">
+              <div className="dashboard-welcome">
+                <p className="dashboard-date">
+                  {currentDate}
+                </p>
 
-            <h2>Visão geral</h2>
+                <h2>Visão geral</h2>
 
-            <p className="dashboard-description">
-              Organize seu dia e acompanhe seus
-              agendamentos.
-            </p>
-          </div>
-
-          <div className="dashboard-header-actions">
-            <button
-              type="button"
-              className="notification-button"
-              aria-label="Notificações"
-            >
-              <Bell size={20} />
-              <span />
-            </button>
-
-            <button
-              type="button"
-              className="primary-dashboard-button"
-            >
-              <Plus size={20} />
-              Novo agendamento
-            </button>
-          </div>
-        </header>
-
-        <section className="dashboard-summary">
-          <article className="summary-card">
-            <div className="summary-icon blue">
-              <Clock3 size={23} />
-            </div>
-
-            <div className="summary-information">
-              <span>Agendamentos hoje</span>
-              <strong>0</strong>
-              <small>Nenhum para hoje</small>
-            </div>
-          </article>
-
-          <article className="summary-card">
-            <div className="summary-icon purple">
-              <CalendarRange size={23} />
-            </div>
-
-            <div className="summary-information">
-              <span>Esta semana</span>
-              <strong>0</strong>
-              <small>Próximos sete dias</small>
-            </div>
-          </article>
-
-          <article className="summary-card">
-            <div className="summary-icon orange">
-              <Users size={23} />
-            </div>
-
-            <div className="summary-information">
-              <span>Total de clientes</span>
-              <strong>0</strong>
-              <small>Clientes cadastrados</small>
-            </div>
-          </article>
-
-          <article className="summary-card">
-            <div className="summary-icon green">
-              <CheckCircle2 size={23} />
-            </div>
-
-            <div className="summary-information">
-              <span>Concluídos</span>
-              <strong>0</strong>
-              <small>Neste mês</small>
-            </div>
-          </article>
-        </section>
-
-        <section className="dashboard-main-grid">
-          <article className="dashboard-panel appointments-panel">
-            <div className="dashboard-panel-header">
-              <div>
-                <h3>Próximos agendamentos</h3>
-                <p>
-                  Seus compromissos mais próximos
+                <p className="dashboard-description">
+                  Organize seu dia e acompanhe
+                  seus agendamentos.
                 </p>
               </div>
 
-              <button
-                type="button"
-                className="panel-link"
-              >
-                Ver agenda
-                <ArrowRight size={16} />
-              </button>
-            </div>
+              <div className="dashboard-header-actions">
+                <button
+                  type="button"
+                  className="notification-button"
+                  aria-label="Notificações"
+                >
+                  <Bell size={20} />
+                  <span />
+                </button>
 
-            <div className="dashboard-empty-state">
-              <div className="empty-icon">
-                <CalendarDays size={29} />
+                <button
+                  type="button"
+                  className="primary-dashboard-button"
+                >
+                  <Plus size={20} />
+                  Novo agendamento
+                </button>
               </div>
+            </header>
 
-              <h4>Sua agenda está livre</h4>
+            <section className="dashboard-summary">
+              <article className="summary-card">
+                <div className="summary-icon blue">
+                  <Clock3 size={23} />
+                </div>
 
-              <p>
-                Você ainda não possui compromissos
-                cadastrados.
-              </p>
+                <div className="summary-information">
+                  <span>
+                    Agendamentos hoje
+                  </span>
 
-              <button
-                type="button"
-                className="secondary-dashboard-button"
-              >
-                <Plus size={18} />
-                Criar primeiro agendamento
-              </button>
-            </div>
-          </article>
+                  <strong>0</strong>
 
-          <aside className="dashboard-panel quick-panel">
-            <div className="dashboard-panel-header">
-              <div>
-                <h3>Ações rápidas</h3>
-                <p>Acesse as principais funções</p>
-              </div>
-            </div>
-
-            <div className="quick-actions-list">
-              <button
-                type="button"
-                className="quick-action"
-              >
-                <span className="quick-action-icon blue">
-                  <CalendarDays size={20} />
-                </span>
-
-                <span className="quick-action-text">
-                  <strong>Novo agendamento</strong>
                   <small>
-                    Cadastre um compromisso
+                    Nenhum para hoje
                   </small>
-                </span>
+                </div>
+              </article>
 
-                <ArrowRight
-                  className="quick-action-arrow"
-                  size={17}
-                />
-              </button>
+              <article className="summary-card">
+                <div className="summary-icon purple">
+                  <CalendarRange size={23} />
+                </div>
 
-              <button
-                type="button"
-                className="quick-action"
-              >
-                <span className="quick-action-icon green">
-                  <UserPlus size={20} />
-                </span>
+                <div className="summary-information">
+                  <span>Esta semana</span>
 
-                <span className="quick-action-text">
-                  <strong>Novo cliente</strong>
+                  <strong>0</strong>
+
                   <small>
-                    Adicione um novo cliente
+                    Próximos sete dias
                   </small>
-                </span>
+                </div>
+              </article>
 
-                <ArrowRight
-                  className="quick-action-arrow"
-                  size={17}
-                />
-              </button>
+              <article className="summary-card">
+                <div className="summary-icon orange">
+                  <Users size={23} />
+                </div>
 
-              <button
-                type="button"
-                className="quick-action"
-              >
-                <span className="quick-action-icon purple">
-                  <BriefcaseBusiness size={20} />
-                </span>
+                <div className="summary-information">
+                  <span>
+                    Total de clientes
+                  </span>
 
-                <span className="quick-action-text">
-                  <strong>Novo serviço</strong>
+                  <strong>0</strong>
+
                   <small>
-                    Cadastre um novo serviço
+                    Clientes cadastrados
                   </small>
-                </span>
+                </div>
+              </article>
 
-                <ArrowRight
-                  className="quick-action-arrow"
-                  size={17}
-                />
-              </button>
-            </div>
-          </aside>
-        </section>
+              <article className="summary-card">
+                <div className="summary-icon green">
+                  <CheckCircle2 size={23} />
+                </div>
+
+                <div className="summary-information">
+                  <span>Concluídos</span>
+
+                  <strong>0</strong>
+
+                  <small>Neste mês</small>
+                </div>
+              </article>
+            </section>
+
+            <section className="dashboard-main-grid">
+              <article className="dashboard-panel appointments-panel">
+                <div className="dashboard-panel-header">
+                  <div>
+                    <h3>
+                      Próximos agendamentos
+                    </h3>
+
+                    <p>
+                      Seus compromissos mais
+                      próximos
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="panel-link"
+                  >
+                    Ver agenda
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
+
+                <div className="dashboard-empty-state">
+                  <div className="empty-icon">
+                    <CalendarDays size={29} />
+                  </div>
+
+                  <h4>Sua agenda está livre</h4>
+
+                  <p>
+                    Você ainda não possui
+                    compromissos cadastrados.
+                  </p>
+
+                  <button
+                    type="button"
+                    className="secondary-dashboard-button"
+                  >
+                    <Plus size={18} />
+                    Criar primeiro agendamento
+                  </button>
+                </div>
+              </article>
+
+              <aside className="dashboard-panel quick-panel">
+                <div className="dashboard-panel-header">
+                  <div>
+                    <h3>Ações rápidas</h3>
+
+                    <p>
+                      Acesse as principais funções
+                    </p>
+                  </div>
+                </div>
+
+                <div className="quick-actions-list">
+                  <button
+                    type="button"
+                    className="quick-action"
+                  >
+                    <span className="quick-action-icon blue">
+                      <CalendarDays size={20} />
+                    </span>
+
+                    <span className="quick-action-text">
+                      <strong>
+                        Novo agendamento
+                      </strong>
+
+                      <small>
+                        Cadastre um compromisso
+                      </small>
+                    </span>
+
+                    <ArrowRight
+                      className="quick-action-arrow"
+                      size={17}
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="quick-action"
+                    onClick={() =>
+                      setActiveSection("clients")
+                    }
+                  >
+                    <span className="quick-action-icon green">
+                      <UserPlus size={20} />
+                    </span>
+
+                    <span className="quick-action-text">
+                      <strong>
+                        Novo cliente
+                      </strong>
+
+                      <small>
+                        Adicione um novo cliente
+                      </small>
+                    </span>
+
+                    <ArrowRight
+                      className="quick-action-arrow"
+                      size={17}
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="quick-action"
+                    onClick={() =>
+                      setActiveSection("services")
+                    }
+                  >
+                    <span className="quick-action-icon purple">
+                      <BriefcaseBusiness
+                        size={20}
+                      />
+                    </span>
+
+                    <span className="quick-action-text">
+                      <strong>
+                        Novo serviço
+                      </strong>
+
+                      <small>
+                        Cadastre um novo serviço
+                      </small>
+                    </span>
+
+                    <ArrowRight
+                      className="quick-action-arrow"
+                      size={17}
+                    />
+                  </button>
+                </div>
+              </aside>
+            </section>
+          </>
+        ) : activeSection === "clients" ? (
+          <Clients />
+        ) : (
+          <Services />
+        )}
       </main>
     </div>
   );
