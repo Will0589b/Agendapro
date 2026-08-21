@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
+import PublicBooking from "./pages/PublicBooking";
 
 import { supabase } from "./lib/supabase";
 
@@ -19,6 +20,22 @@ type ScreenMode =
   | "register"
   | "forgot"
   | "reset";
+
+const getPublicBookingSlug = () => {
+  const match = window.location.pathname.match(
+    /^\/agendar\/([^/]+)\/?$/
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  try {
+    return decodeURIComponent(match[1]);
+  } catch {
+    return null;
+  }
+};
 
 function App() {
   const [mode, setMode] =
@@ -30,6 +47,9 @@ function App() {
   const [checkingSession, setCheckingSession] =
     useState(true);
 
+  const publicBookingSlug =
+    getPublicBookingSlug();
+
   useEffect(() => {
     const checkSession = async () => {
       const {
@@ -40,7 +60,7 @@ function App() {
       setCheckingSession(false);
     };
 
-    checkSession();
+    void checkSession();
 
     const {
       data: { subscription },
@@ -74,6 +94,14 @@ function App() {
       );
     }
   };
+
+  if (publicBookingSlug) {
+    return (
+      <PublicBooking
+        slug={publicBookingSlug}
+      />
+    );
+  }
 
   if (checkingSession) {
     return (
