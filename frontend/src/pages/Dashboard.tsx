@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import {
   ArrowRight,
@@ -7,7 +11,9 @@ import {
   CalendarDays,
   CalendarRange,
   CheckCircle2,
+  CheckCheck,
   Clock3,
+  Inbox,
   LayoutDashboard,
   LoaderCircle,
   LogOut,
@@ -58,6 +64,16 @@ type UpcomingAppointment = {
   } | null;
 };
 
+type DashboardNotification = {
+  id: string;
+  appointment_id: string | null;
+  type: string;
+  title: string;
+  message: string;
+  read_at: string | null;
+  created_at: string;
+};
+
 const initialSummary: DashboardSummary = {
   today: 0,
   nextSevenDays: 0,
@@ -86,6 +102,15 @@ function Dashboard({
   const [overviewError, setOverviewError] =
     useState<string | null>(null);
 
+  const [notifications, setNotifications] =
+    useState<DashboardNotification[]>([]);
+
+  const [notificationsOpen, setNotificationsOpen] =
+    useState(false);
+
+  const [notificationsLoading, setNotificationsLoading] =
+    useState(true);
+
   const currentDate = new Intl.DateTimeFormat(
     "pt-BR",
     {
@@ -101,8 +126,136 @@ function Dashboard({
     .toUpperCase();
 
   const openAppointments = () => {
+    setNotificationsOpen(false);
     setActiveSection("appointments");
   };
+
+  const unreadNotifications = notifications.filter(
+    (notification) => !notification.read_at
+  ).length;
+
+  const loadNotifications = useCallback(async () => {
+    const { data, error: notificationsError } =
+      await supabase
+        .from("notifications")
+        .select(`
+          id,
+          appointment_id,
+          type,
+          title,
+          message,
+          read_at,
+          created_at
+        `)
+        .order("created_at", {
+          ascending: false,
+        })
+        .limit(8);
+
+    if (notificationsError) {
+      console.error(notificationsError);
+      setNotificationsLoading(false);
+      return;
+    }
+
+    setNotifications(
+      (data ?? []) as DashboardNotification[]
+    );
+    setNotificationsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    void loadNotifications();
+
+    const notificationsChannel = supabase
+      .channel("dashboard-notifications")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "notifications",
+        },
+        () => {
+          void loadNotifications();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(
+        notificationsChannel
+      );
+    };
+  }, [loadNotifications]);
+
+  const toggleNotifications = () => {
+    setNotificationsOpen((current) => !current);
+    void loadNotifications();
+  };
+
+  const markAllNotificationsAsRead = async () => {
+    if (unreadNotifications === 0) {
+      return;
+    }
+
+    const readAt = new Date().toISOString();
+
+    const { error: updateError } = await supabase
+      .from("notifications")
+      .update({ read_at: readAt })
+      .is("read_at", null);
+
+    if (updateError) {
+      console.error(updateError);
+      return;
+    }
+
+    setNotifications((currentNotifications) =>
+      currentNotifications.map((notification) => ({
+        ...notification,
+        read_at: notification.read_at ?? readAt,
+      }))
+    );
+  };
+
+  const openNotification = async (
+    notification: DashboardNotification
+  ) => {
+    if (!notification.read_at) {
+      const readAt = new Date().toISOString();
+
+      const { error: updateError } = await supabase
+        .from("notifications")
+        .update({ read_at: readAt })
+        .eq("id", notification.id);
+
+      if (updateError) {
+        console.error(updateError);
+      } else {
+        setNotifications((currentNotifications) =>
+          currentNotifications.map((current) =>
+            current.id === notification.id
+              ? {
+                  ...current,
+                  read_at: readAt,
+                }
+              : current
+          )
+        );
+      }
+    }
+
+    openAppointments();
+  };
+
+  const formatNotificationDate = (value: string) =>
+    new Intl.DateTimeFormat("pt-BR", {
+      day: "2-digit",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date(value));
 
   useEffect(() => {
     if (activeSection !== "overview") {
@@ -495,14 +648,118 @@ function Dashboard({
               </div>
 
               <div className="dashboard-header-actions">
-                <button
-                  type="button"
-                  className="notification-button"
-                  aria-label="Notificações"
-                >
-                  <Bell size={20} />
-                  <span />
-                </button>
+                <div className="notification-wrapper">
+                  <button
+                    type="button"
+                    className="notification-button"
+                    aria-label="Notificações"
+                    aria-expanded={notificationsOpen}
+                    aria-controls="dashboard-notifications-panel"
+                    onClick={toggleNotifications}
+                  >
+                    <Bell size={20} />
+
+                    {unreadNotifications > 0 && (
+                      <span className="notification-badge">
+                        {unreadNotifications > 9
+                          ? "9+"
+                          : unreadNotifications}
+                      </span>
+                    )}
+                  </button>
+
+                  {notificationsOpen && (
+                    <div
+                      id="dashboard-notifications-panel"
+                      className="notification-panel"
+                    >
+                      <div className="notification-panel-header">
+                        <div>
+                          <strong>Notificações</strong>
+                          <span>
+                            {unreadNotifications === 0
+                              ? "Você está em dia"
+                              : unreadNotifications === 1
+                                ? "1 não lida"
+                                : `${unreadNotifications} não lidas`}
+                          </span>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={markAllNotificationsAsRead}
+                          disabled={unreadNotifications === 0}
+                          title="Marcar todas como lidas"
+                        >
+                          <CheckCheck size={17} />
+                          <span>Marcar como lidas</span>
+                        </button>
+                      </div>
+
+                      <div className="notification-list">
+                        {notificationsLoading ? (
+                          <div className="notification-empty">
+                            <LoaderCircle
+                              className="dashboard-loading-icon"
+                              size={24}
+                            />
+                            <span>Carregando...</span>
+                          </div>
+                        ) : notifications.length === 0 ? (
+                          <div className="notification-empty">
+                            <Inbox size={27} />
+                            <strong>Nenhuma notificação</strong>
+                            <span>
+                              Novos agendamentos aparecerão aqui.
+                            </span>
+                          </div>
+                        ) : (
+                          notifications.map((notification) => (
+                            <button
+                              key={notification.id}
+                              type="button"
+                              className={`notification-item ${
+                                notification.read_at
+                                  ? "read"
+                                  : "unread"
+                              }`}
+                              onClick={() =>
+                                void openNotification(
+                                  notification
+                                )
+                              }
+                            >
+                              <span className="notification-item-icon">
+                                <CalendarDays size={18} />
+                              </span>
+
+                              <span className="notification-item-content">
+                                <strong>
+                                  {notification.title}
+                                </strong>
+                                <span>
+                                  {notification.message}
+                                </span>
+                                <small>
+                                  {formatNotificationDate(
+                                    notification.created_at
+                                  )}
+                                </small>
+                              </span>
+
+                              {!notification.read_at && (
+                                <span
+                                  className="notification-unread-dot"
+                                  aria-label="Não lida"
+                                />
+                              )}
+                            </button>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
 
                 <button
                   type="button"
