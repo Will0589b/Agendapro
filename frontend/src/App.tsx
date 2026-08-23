@@ -12,6 +12,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
 import PublicBooking from "./pages/PublicBooking";
+import BookingManagement from "./pages/BookingManagement";
 
 import { supabase } from "./lib/supabase";
 
@@ -37,6 +38,25 @@ const getPublicBookingSlug = () => {
   }
 };
 
+const getAppointmentManagementToken = () => {
+  const pathParts = window.location.pathname
+    .split("/")
+    .filter(Boolean);
+
+  if (
+    pathParts[0] !== "agendamento" ||
+    !pathParts[1]
+  ) {
+    return null;
+  }
+
+  try {
+    return decodeURIComponent(pathParts[1]);
+  } catch {
+    return null;
+  }
+};
+
 function App() {
   const [mode, setMode] =
     useState<ScreenMode>("login");
@@ -49,6 +69,9 @@ function App() {
 
   const publicBookingSlug =
     getPublicBookingSlug();
+
+  const appointmentManagementToken =
+    getAppointmentManagementToken();
 
   useEffect(() => {
     const checkSession = async () => {
@@ -94,6 +117,14 @@ function App() {
       );
     }
   };
+
+  if (appointmentManagementToken) {
+    return (
+      <BookingManagement
+        token={appointmentManagementToken}
+      />
+    );
+  }
 
   if (publicBookingSlug) {
     return (
