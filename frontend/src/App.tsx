@@ -5,6 +5,7 @@ import {
 import type { Session } from "@supabase/supabase-js";
 
 import "./App.css";
+import "./pages/DashboardPremium.css";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
