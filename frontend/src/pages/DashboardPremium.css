@@ -1,447 +1,240 @@
-/* AgendaPro — dashboard dark premium layer
-   Imported after Dashboard.css so the existing layout and behavior stay intact. */
+/* AgendaPro — forced dark premium dashboard layer */
 
 .dashboard {
-  min-height: 100dvh;
-  color: #f4f7f8;
+  min-height: 100dvh !important;
+  color: #f4f7f8 !important;
   background:
     radial-gradient(circle at 88% 8%, rgba(20, 184, 166, 0.07), transparent 28%),
-    #090a0c;
-}
-
-.dashboard::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent 82%);
+    #090a0c !important;
 }
 
 .dashboard-shape {
-  display: none;
+  display: none !important;
 }
 
-/* Sidebar */
-.dashboard-sidebar {
-  background: rgba(14, 16, 18, 0.96);
-  border: 1px solid #24282d;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(18px);
+.dashboard .dashboard-sidebar {
+  background: #0f1114 !important;
+  border: 1px solid #24282d !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3) !important;
 }
 
-.dashboard-brand-area {
-  border-bottom-color: #24282d;
+.dashboard .dashboard-brand-area,
+.dashboard .dashboard-account,
+.dashboard .dashboard-panel-header {
+  border-color: #24282d !important;
 }
 
-.dashboard-brand-area .brand-name {
-  color: #f4f7f8;
+.dashboard .brand-name,
+.dashboard .dashboard-user-data strong,
+.dashboard .dashboard-welcome h2,
+.dashboard .dashboard-panel-header h3,
+.dashboard .summary-information strong,
+.dashboard .quick-action-text strong,
+.dashboard .dashboard-upcoming-date strong,
+.dashboard .dashboard-upcoming-data strong,
+.dashboard .notification-panel-header strong,
+.dashboard .notification-empty strong,
+.dashboard .notification-item-content strong {
+  color: #f3f6f8 !important;
 }
 
-.dashboard-brand-area .brand-name span {
-  color: #14b8a6;
+.dashboard .brand-name span,
+.dashboard .dashboard-date,
+.dashboard .panel-link {
+  color: #2dd4bf !important;
 }
 
-.dashboard-nav-item {
-  color: #8c96a3;
+.dashboard .dashboard-description,
+.dashboard .summary-information > span,
+.dashboard .summary-information small,
+.dashboard .dashboard-panel-header p,
+.dashboard .quick-action-text small,
+.dashboard .dashboard-upcoming-date small,
+.dashboard .dashboard-upcoming-data small,
+.dashboard .dashboard-user-data span,
+.dashboard .notification-panel-header > div > span,
+.dashboard .notification-item-content > span,
+.dashboard .notification-item-content small {
+  color: #858f9b !important;
 }
 
-.dashboard-nav-item:hover {
-  color: #e9eef2;
-  background: #171a1e;
-  transform: translateX(2px);
+.dashboard .dashboard-nav-item {
+  color: #929ca8 !important;
+  background: transparent !important;
 }
 
-.dashboard-nav-item.active {
-  color: #dffbf6;
-  background: #162b29;
-  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.24);
+.dashboard .dashboard-nav-item:hover {
+  color: #eef2f4 !important;
+  background: #171a1e !important;
 }
 
-.dashboard-nav-item.active svg {
-  color: #2dd4bf;
+.dashboard .dashboard-nav-item.active {
+  color: #dffbf6 !important;
+  background: #162b29 !important;
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.24) !important;
 }
 
-.dashboard-account {
-  border-top-color: #24282d;
+.dashboard .dashboard-nav-item.active svg {
+  color: #2dd4bf !important;
 }
 
-.dashboard-avatar {
-  color: #dffbf6;
-  background: #173a35;
-  border: 1px solid rgba(20, 184, 166, 0.28);
-  box-shadow: none;
+.dashboard .dashboard-avatar {
+  color: #dffbf6 !important;
+  background: #173a35 !important;
+  border: 1px solid rgba(45, 212, 191, 0.28) !important;
+  box-shadow: none !important;
 }
 
-.dashboard-user-data strong {
-  color: #e9eef2;
+.dashboard .dashboard-logout {
+  color: #7e8995 !important;
 }
 
-.dashboard-user-data span {
-  color: #737e8b;
+.dashboard .dashboard-logout:hover {
+  color: #fda4af !important;
+  background: rgba(244, 63, 94, 0.09) !important;
 }
 
-.dashboard-logout {
-  color: #747f8b;
+.dashboard .notification-button {
+  color: #9aa4af !important;
+  background: #111316 !important;
+  border-color: #292d33 !important;
 }
 
-.dashboard-logout:hover {
-  color: #fda4af;
-  background: rgba(244, 63, 94, 0.09);
+.dashboard .notification-button:hover {
+  color: #eef2f4 !important;
+  background: #171a1e !important;
 }
 
-/* Main content */
-.dashboard-content {
-  max-width: 1680px;
+.dashboard .notification-badge {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border-color: #090a0c !important;
 }
 
-.dashboard-date {
-  color: #2dd4bf;
-  letter-spacing: 0.02em;
+.dashboard .primary-dashboard-button {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border: 1px solid #42dcc9 !important;
+  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.15) !important;
 }
 
-.dashboard-welcome h2 {
-  color: #f6f8fa;
-  font-size: clamp(28px, 3vw, 34px);
-  font-weight: 720;
-  letter-spacing: -0.04em;
+.dashboard .primary-dashboard-button:hover {
+  background: #40dac6 !important;
 }
 
-.dashboard-description {
-  color: #818b97;
+.dashboard .summary-card,
+.dashboard .dashboard-panel {
+  background: #111316 !important;
+  border-color: #24282d !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22) !important;
+  backdrop-filter: none !important;
 }
 
-/* Header actions */
-.notification-button {
-  color: #9aa4af;
-  background: #111316;
-  border-color: #292d33;
-  transition:
-    color 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+.dashboard .summary-card::after {
+  background: rgba(45, 212, 191, 0.035) !important;
 }
 
-.notification-button:hover {
-  color: #e7edee;
-  background: #171a1e;
-  border-color: #394047;
-  transform: translateY(-1px);
+.dashboard .summary-card:hover {
+  border-color: rgba(45, 212, 191, 0.28) !important;
 }
 
-.notification-badge {
-  color: #07110f;
-  background: #2dd4bf;
-  border-color: #090a0c;
+.dashboard .summary-icon.blue,
+.dashboard .quick-action-icon.blue,
+.dashboard .summary-icon.purple,
+.dashboard .quick-action-icon.purple,
+.dashboard .summary-icon.orange,
+.dashboard .summary-icon.green,
+.dashboard .quick-action-icon.green {
+  color: #2dd4bf !important;
+  background: #152725 !important;
 }
 
-.primary-dashboard-button {
-  color: #061411;
-  background: #2dd4bf;
-  border: 1px solid #42dcc9;
-  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.12);
+.dashboard .quick-action,
+.dashboard .dashboard-upcoming-item {
+  color: #dce2e6 !important;
+  background: #15181c !important;
+  border-color: #262b31 !important;
+  box-shadow: none !important;
 }
 
-.primary-dashboard-button:hover {
-  background: #40dac6;
-  box-shadow: 0 14px 30px rgba(20, 184, 166, 0.18);
-  transform: translateY(-1px);
+.dashboard .quick-action:hover,
+.dashboard .dashboard-upcoming-item:hover {
+  background: #191d21 !important;
+  border-color: rgba(45, 212, 191, 0.28) !important;
 }
 
-/* Notification dropdown */
-.notification-panel {
-  background: rgba(16, 18, 21, 0.98);
-  border-color: #2a2f35;
-  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.42);
+.dashboard .quick-action-arrow,
+.dashboard .dashboard-upcoming-item > svg {
+  color: #66717d !important;
 }
 
-.notification-panel-header {
-  border-bottom-color: #262b31;
+.dashboard .dashboard-upcoming-date {
+  color: #2dd4bf !important;
 }
 
-.notification-panel-header strong,
-.notification-empty strong {
-  color: #eef2f4;
+.dashboard .dashboard-upcoming-status.scheduled {
+  color: #93c5fd !important;
+  background: rgba(37, 99, 235, 0.14) !important;
 }
 
-.notification-panel-header > div > span,
-.notification-empty,
-.notification-item-content > span,
-.notification-item-content small {
-  color: #7f8995;
+.dashboard .dashboard-upcoming-status.confirmed {
+  color: #6ee7d5 !important;
+  background: rgba(20, 184, 166, 0.14) !important;
 }
 
-.notification-panel-header > button {
-  color: #6ee7d5;
-  background: #122724;
-  border-color: #20544d;
+.dashboard .secondary-dashboard-button {
+  color: #6ee7d5 !important;
+  background: #111316 !important;
+  border-color: #28534e !important;
 }
 
-.notification-panel-header > button:disabled {
-  color: #67717c;
-  background: #15171a;
-  border-color: #2a2e34;
+.dashboard .secondary-dashboard-button:hover {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border-color: #2dd4bf !important;
 }
 
-.notification-item {
-  color: #dce2e6;
+.dashboard .notification-panel {
+  background: #101215 !important;
+  border-color: #2a2f35 !important;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.45) !important;
 }
 
-.notification-item:hover,
-.notification-item.unread {
-  background: #171b1f;
+.dashboard .notification-panel-header {
+  border-bottom-color: #262b31 !important;
 }
 
-.notification-item + .notification-item {
-  border-top-color: #22272c;
+.dashboard .notification-panel-header > button {
+  color: #6ee7d5 !important;
+  background: #122724 !important;
+  border-color: #20544d !important;
 }
 
-.notification-item-icon {
-  color: #2dd4bf;
-  background: #152a27;
+.dashboard .notification-item {
+  color: #dce2e6 !important;
+  background: transparent !important;
 }
 
-.notification-item-content strong {
-  color: #e6ecef;
+.dashboard .notification-item:hover,
+.dashboard .notification-item.unread {
+  background: #171b1f !important;
 }
 
-.notification-unread-dot {
-  background: #2dd4bf;
-  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
+.dashboard .notification-item + .notification-item {
+  border-top-color: #22272c !important;
 }
 
-/* Summary */
-.dashboard-summary {
-  gap: 14px;
+.dashboard .notification-item-icon {
+  color: #2dd4bf !important;
+  background: #152a27 !important;
 }
 
-.summary-card {
-  background: #111316;
-  border-color: #252a30;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.summary-card::after {
-  display: none;
-}
-
-.summary-card:hover {
-  background: #14171a;
-  border-color: #354039;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
-  transform: translateY(-2px);
-}
-
-.summary-icon,
-.summary-icon.blue,
-.summary-icon.purple,
-.summary-icon.orange,
-.summary-icon.green,
-.quick-action-icon,
-.quick-action-icon.blue,
-.quick-action-icon.purple,
-.quick-action-icon.green {
-  color: #5eead4;
-  background: #142824;
-  border: 1px solid rgba(45, 212, 191, 0.12);
-}
-
-.summary-information > span {
-  color: #838e9a;
-}
-
-.summary-information strong {
-  color: #f3f6f8;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.summary-information small {
-  color: #68737f;
-}
-
-/* Panels */
-.dashboard-panel {
-  background: #101215;
-  border-color: #252a30;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.dashboard-panel-header {
-  border-bottom-color: #252a30;
-}
-
-.dashboard-panel-header h3 {
-  color: #f0f4f6;
-  letter-spacing: -0.02em;
-}
-
-.dashboard-panel-header p {
-  color: #737e8a;
-}
-
-.panel-link {
-  color: #5eead4;
-}
-
-.panel-link:hover {
-  color: #99f6e4;
-}
-
-/* Empty states */
-.empty-icon {
-  color: #5eead4;
-  background: #142824;
-  border: 1px solid rgba(45, 212, 191, 0.12);
-}
-
-.dashboard-empty-state h4 {
-  color: #eaf0f2;
-}
-
-.dashboard-empty-state p {
-  color: #77828e;
-}
-
-.secondary-dashboard-button {
-  color: #b7f4e9;
-  background: #151a1c;
-  border-color: #285048;
-}
-
-.secondary-dashboard-button:hover {
-  color: #061411;
-  background: #2dd4bf;
-  border-color: #2dd4bf;
-}
-
-/* Quick actions */
-.quick-action {
-  color: inherit;
-  background: #14171a;
-  border-color: #242a30;
-}
-
-.quick-action:hover {
-  background: #171b1e;
-  border-color: #31504a;
-  box-shadow: none;
-  transform: translateX(2px);
-}
-
-.quick-action-text strong {
-  color: #e8edef;
-}
-
-.quick-action-text small {
-  color: #717c88;
-}
-
-.quick-action-arrow {
-  color: #535e69;
-}
-
-/* Upcoming appointments */
-.dashboard-loading-icon {
-  color: #2dd4bf;
-}
-
-.dashboard-upcoming-item {
-  color: inherit;
-  background: #14171a;
-  border-color: #242a30;
-}
-
-.dashboard-upcoming-item:hover {
-  background: #181c20;
-  border-color: #31504a;
-  box-shadow: none;
-  transform: translateY(-1px);
-}
-
-.dashboard-upcoming-date {
-  color: #5eead4;
-}
-
-.dashboard-upcoming-date strong,
-.dashboard-upcoming-data strong {
-  color: #e9eef1;
-}
-
-.dashboard-upcoming-date small,
-.dashboard-upcoming-data small {
-  color: #75808c;
-}
-
-.dashboard-upcoming-status.scheduled {
-  color: #93c5fd;
-  background: rgba(37, 99, 235, 0.12);
-  border: 1px solid rgba(96, 165, 250, 0.14);
-}
-
-.dashboard-upcoming-status.confirmed {
-  color: #6ee7d5;
-  background: rgba(20, 184, 166, 0.11);
-  border: 1px solid rgba(45, 212, 191, 0.14);
-}
-
-.dashboard-upcoming-item > svg {
-  color: #5c6672;
-}
-
-/* Scrollbars inside dark surfaces */
-.notification-list,
-.dashboard-upcoming-list {
-  scrollbar-color: #363c43 transparent;
-  scrollbar-width: thin;
-}
-
-@media (max-width: 850px) {
-  .dashboard-sidebar {
-    background: rgba(14, 16, 18, 0.98);
-  }
+.dashboard .notification-unread-dot {
+  background: #2dd4bf !important;
 }
 
 @media (max-width: 620px) {
-  .dashboard {
-    background: #090a0c;
-  }
-
-  .dashboard-sidebar {
-    border-color: #2b3036;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
-  }
-
-  .dashboard-nav-item.active {
-    background: #17312d;
-  }
-
-  .dashboard-panel,
-  .summary-card {
-    border-radius: 18px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-sidebar,
-  .dashboard-content,
-  .notification-panel {
-    animation: none;
-  }
-
-  .dashboard-nav-item,
-  .summary-card,
-  .quick-action,
-  .dashboard-upcoming-item,
-  .primary-dashboard-button,
-  .notification-button {
-    transition: none;
+  .dashboard .dashboard-sidebar {
+    background: rgba(15, 17, 20, 0.98) !important;
   }
 }
