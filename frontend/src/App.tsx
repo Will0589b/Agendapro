@@ -158,54 +158,98 @@ function App() {
 
   return (
     <main className="login-page">
-      <div className="bubble bubble-1"></div>
-      <div className="bubble bubble-2"></div>
-      <div className="bubble bubble-3"></div>
-      <div className="bubble bubble-4"></div>
+      <div className="auth-shell">
+        <section className="auth-showcase">
+          <div className="auth-showcase-content">
+            <span className="auth-eyebrow">
+              Agenda inteligente para o seu negócio
+            </span>
 
-      <section className="login-card">
-        {mode === "login" && (
-          <Login
-            onRegister={() =>
-              setMode("register")
-            }
-            onForgotPassword={() =>
-              setMode("forgot")
-            }
-          />
-        )}
+            <h1 className="auth-showcase-title">
+              Seu tempo.
+              <span> Organizado.</span>
+            </h1>
 
-        {mode === "register" && (
-          <Register
-            onBackToLogin={() =>
-              setMode("login")
-            }
-          />
-        )}
+            <p className="auth-showcase-description">
+              Gerencie clientes, compromissos e agendamentos
+              online com uma experiência simples, moderna e
+              profissional.
+            </p>
 
-        {mode === "forgot" && (
-          <ForgotPassword
-            onBackToLogin={() =>
-              setMode("login")
-            }
-          />
-        )}
+            <div className="auth-benefits">
+              <div className="auth-benefit">
+                <span className="auth-benefit-dot"></span>
+                Agendamento online para seus clientes
+              </div>
 
-        {mode === "reset" && (
-          <ResetPassword
-            onBackToLogin={async () => {
-              window.history.replaceState(
-                {},
-                "",
-                "/"
-              );
+              <div className="auth-benefit">
+                <span className="auth-benefit-dot"></span>
+                Organização da agenda em tempo real
+              </div>
 
-              await supabase.auth.signOut();
-              setMode("login");
-            }}
-          />
-        )}
-      </section>
+              <div className="auth-benefit">
+                <span className="auth-benefit-dot"></span>
+                Confirmações e gerenciamento por e-mail
+              </div>
+            </div>
+          </div>
+
+          <div className="auth-visual" aria-hidden="true">
+            <div className="auth-time-line auth-time-line-1"></div>
+            <div className="auth-time-line auth-time-line-2"></div>
+            <div className="auth-time-line auth-time-line-3"></div>
+
+            <div className="auth-time-card auth-time-card-1">
+              <span>09:00</span>
+              <strong>Consulta</strong>
+            </div>
+
+            <div className="auth-time-card auth-time-card-2">
+              <span>13:30</span>
+              <strong>Reunião</strong>
+            </div>
+
+            <div className="auth-time-card auth-time-card-3">
+              <span>16:00</span>
+              <strong>Atendimento</strong>
+            </div>
+          </div>
+        </section>
+
+        <section className="auth-form-panel">
+          <div className="login-card">
+            {mode === "login" && (
+              <Login
+                onRegister={() => setMode("register")}
+                onForgotPassword={() => setMode("forgot")}
+              />
+            )}
+
+            {mode === "register" && (
+              <Register
+                onBackToLogin={() => setMode("login")}
+              />
+            )}
+
+            {mode === "forgot" && (
+              <ForgotPassword
+                onBackToLogin={() => setMode("login")}
+              />
+            )}
+
+            {mode === "reset" && (
+              <ResetPassword
+                onBackToLogin={async () => {
+                  window.history.replaceState({}, "", "/");
+
+                  await supabase.auth.signOut();
+                  setMode("login");
+                }}
+              />
+            )}
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
