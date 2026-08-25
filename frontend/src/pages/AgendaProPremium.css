@@ -1,0 +1,659 @@
+/* AgendaPro — unified dark premium layer for remaining product surfaces */
+
+/* ==========================
+   CLIENTES
+========================== */
+.dashboard .clients-header h2,
+.dashboard .clients-empty h3,
+.dashboard .client-details h3,
+.dashboard .client-modal-header h3,
+.dashboard .client-form label {
+  color: #f3f6f8 !important;
+}
+
+.dashboard .clients-header > div > p:last-child,
+.dashboard .clients-counter,
+.dashboard .clients-loading,
+.dashboard .clients-empty p,
+.dashboard .client-contacts span,
+.dashboard .client-notes,
+.dashboard .client-modal-header p {
+  color: #8f99a5 !important;
+}
+
+.dashboard .clients-primary-button {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border: 1px solid #42dcc9 !important;
+  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.14) !important;
+}
+
+.dashboard .clients-toolbar,
+.dashboard .clients-container,
+.dashboard .client-card,
+.dashboard .client-modal {
+  background: #111316 !important;
+  border-color: #262b31 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: none !important;
+}
+
+.dashboard .clients-search,
+.dashboard .client-form input,
+.dashboard .client-form textarea,
+.dashboard .client-action-button {
+  color: #e8edf0 !important;
+  background: #15181c !important;
+  border-color: #2a3036 !important;
+}
+
+.dashboard .clients-search input {
+  color: #e8edf0 !important;
+}
+
+.dashboard .clients-search input::placeholder,
+.dashboard .client-form input::placeholder,
+.dashboard .client-form textarea::placeholder {
+  color: #68737f !important;
+}
+
+.dashboard .clients-search:focus-within,
+.dashboard .client-form input:focus,
+.dashboard .client-form textarea:focus {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08) !important;
+}
+
+.dashboard .client-card:hover {
+  border-color: rgba(45, 212, 191, 0.3) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24) !important;
+}
+
+.dashboard .client-avatar,
+.dashboard .clients-empty-icon,
+.dashboard .client-modal-header > div > span {
+  color: #6ee7d5 !important;
+  background: #15302c !important;
+  border: 1px solid rgba(45, 212, 191, 0.2) !important;
+  box-shadow: none !important;
+}
+
+.dashboard .client-modal-header,
+.dashboard .client-actions {
+  border-color: #262b31 !important;
+}
+
+.dashboard .client-modal-header > button:hover {
+  background: #191d21 !important;
+}
+
+.dashboard .client-cancel-button,
+.dashboard .clients-empty button {
+  color: #b9c2cb !important;
+  background: #15181c !important;
+  border-color: #30363d !important;
+}
+
+.dashboard .client-action-button.edit {
+  color: #6ee7d5 !important;
+}
+
+.dashboard .client-action-button.edit:hover {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border-color: #2dd4bf !important;
+}
+
+.dashboard .client-action-button.delete {
+  color: #fda4af !important;
+}
+
+.dashboard .clients-error {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+/* ==========================
+   SERVIÇOS
+========================== */
+.dashboard .services-header h2,
+.dashboard .services-empty h3,
+.dashboard .service-details h3,
+.dashboard .service-modal-header h3,
+.dashboard .service-form label,
+.dashboard .service-icon-label,
+.dashboard .service-template-label {
+  color: #f3f6f8 !important;
+}
+
+.dashboard .services-header > div > p:last-child,
+.dashboard .services-counter,
+.dashboard .services-loading,
+.dashboard .services-empty p,
+.dashboard .service-details p,
+.dashboard .service-information span,
+.dashboard .service-modal-header p,
+.dashboard .service-active-field small {
+  color: #8f99a5 !important;
+}
+
+.dashboard .services-primary-button {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border: 1px solid #42dcc9 !important;
+  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.14) !important;
+}
+
+.dashboard .services-toolbar,
+.dashboard .services-container,
+.dashboard .service-card,
+.dashboard .service-modal {
+  background: #111316 !important;
+  border-color: #262b31 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dashboard .services-search,
+.dashboard .service-form input,
+.dashboard .service-form textarea,
+.dashboard .service-active-field,
+.dashboard .service-icon-option,
+.dashboard .service-template-search {
+  color: #e8edf0 !important;
+  background: #15181c !important;
+  border-color: #2a3036 !important;
+}
+
+.dashboard .services-search input,
+.dashboard .service-template-search input {
+  color: #e8edf0 !important;
+}
+
+.dashboard .services-search:focus-within,
+.dashboard .service-form input:focus,
+.dashboard .service-form textarea:focus,
+.dashboard .service-template-search:focus-within {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08) !important;
+}
+
+.dashboard .service-card:hover {
+  border-color: rgba(45, 212, 191, 0.3) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24) !important;
+}
+
+.dashboard .service-icon,
+.dashboard .services-empty-icon,
+.dashboard .service-modal-header > div > span {
+  color: #6ee7d5 !important;
+  background: #15302c !important;
+}
+
+.dashboard .service-status.active {
+  color: #6ee7d5 !important;
+  background: rgba(20, 184, 166, 0.12) !important;
+}
+
+.dashboard .service-status.inactive {
+  color: #94a3b8 !important;
+  background: #1b1f24 !important;
+}
+
+.dashboard .service-information,
+.dashboard .service-modal-header {
+  border-color: #262b31 !important;
+}
+
+.dashboard .service-information strong {
+  color: #5eead4 !important;
+}
+
+.dashboard .service-edit-button {
+  color: #6ee7d5 !important;
+  background: #132623 !important;
+  border-color: #28534e !important;
+}
+
+.dashboard .service-delete-button {
+  color: #fda4af !important;
+  background: rgba(127, 29, 29, 0.12) !important;
+  border-color: rgba(239, 68, 68, 0.22) !important;
+}
+
+.dashboard .service-cancel-button,
+.dashboard .services-empty button {
+  color: #b9c2cb !important;
+  background: #15181c !important;
+  border-color: #30363d !important;
+}
+
+.dashboard .service-icon-option:hover,
+.dashboard .service-icon-option.selected {
+  color: #dffbf6 !important;
+  background: #173a35 !important;
+  border-color: #2c6b62 !important;
+  box-shadow: none !important;
+}
+
+.dashboard .services-error {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+/* ==========================
+   CONFIGURAÇÕES
+========================== */
+.dashboard .settings-header h2,
+.dashboard .settings-card-header h3,
+.dashboard .settings-fields-grid label,
+.dashboard .settings-slug-field,
+.dashboard .settings-switch-row strong,
+.dashboard .business-day-toggle,
+.dashboard .settings-save-area strong {
+  color: #f3f6f8 !important;
+}
+
+.dashboard .settings-header p,
+.dashboard .settings-loading,
+.dashboard .settings-card-header p,
+.dashboard .settings-field-full small,
+.dashboard .settings-switch-row small,
+.dashboard .business-hour-inputs span,
+.dashboard .business-hour-closed,
+.dashboard .settings-save-area span {
+  color: #8f99a5 !important;
+}
+
+.dashboard .settings-loading,
+.dashboard .settings-card,
+.dashboard .settings-save-area {
+  background: #111316 !important;
+  border-color: #262b31 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: none !important;
+}
+
+.dashboard .settings-card-header {
+  border-color: #262b31 !important;
+}
+
+.dashboard .settings-card-icon.blue,
+.dashboard .settings-card-icon.green,
+.dashboard .settings-card-icon.purple {
+  color: #6ee7d5 !important;
+  background: #15302c !important;
+}
+
+.dashboard .settings-fields-grid input,
+.dashboard .settings-fields-grid textarea,
+.dashboard .settings-slug-input,
+.dashboard .business-hour-inputs input,
+.dashboard .settings-switch-row,
+.dashboard .business-hour-row {
+  color: #e8edf0 !important;
+  background: #15181c !important;
+  border-color: #2a3036 !important;
+}
+
+.dashboard .settings-slug-input > span {
+  color: #8f99a5 !important;
+  background: #191d21 !important;
+  border-color: #2a3036 !important;
+}
+
+.dashboard .settings-slug-input input {
+  color: #e8edf0 !important;
+}
+
+.dashboard .settings-fields-grid input:focus,
+.dashboard .settings-fields-grid textarea:focus,
+.dashboard .settings-slug-input:focus-within,
+.dashboard .business-hour-inputs input:focus {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08) !important;
+}
+
+.dashboard .business-hour-row.open {
+  background: #132421 !important;
+  border-color: #27544d !important;
+}
+
+.dashboard .settings-switch-row input,
+.dashboard .business-day-toggle input {
+  background: #3b444d !important;
+}
+
+.dashboard .settings-switch-row input:checked,
+.dashboard .business-day-toggle input:checked {
+  background: #2dd4bf !important;
+}
+
+.dashboard .settings-save-button {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  box-shadow: 0 10px 22px rgba(20, 184, 166, 0.14) !important;
+}
+
+.dashboard .settings-message.error {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+.dashboard .settings-message.success {
+  color: #6ee7d5 !important;
+  background: rgba(13, 78, 74, 0.18) !important;
+  border-color: rgba(45, 212, 191, 0.22) !important;
+}
+
+/* ==========================
+   AGENDAMENTO PÚBLICO
+========================== */
+.public-booking-page {
+  min-height: 100dvh !important;
+  color: #f3f6f8 !important;
+  background: #090a0c !important;
+}
+
+.public-booking-shape {
+  display: none !important;
+}
+
+.public-booking-page .brand-name,
+.public-professional-card h1,
+.public-booking-heading h2,
+.public-section-title h3,
+.public-service-data > strong,
+.public-client-grid label,
+.public-booking-summary strong,
+.public-booking-success h1,
+.public-booking-unavailable h1 {
+  color: #f3f6f8 !important;
+}
+
+.public-booking-topbar > a,
+.public-professional-card > strong,
+.public-professional-card > p,
+.public-professional-details > div,
+.public-booking-heading p,
+.public-section-title p,
+.public-service-data > small,
+.public-service-data > span,
+.public-slots-loading,
+.public-booking-helper,
+.public-client-grid input::placeholder,
+.public-client-grid textarea::placeholder,
+.public-booking-summary span,
+.public-booking-footer,
+.public-booking-loading,
+.public-booking-unavailable p,
+.public-booking-success p {
+  color: #8f99a5 !important;
+}
+
+.public-professional-card,
+.public-booking-card,
+.public-booking-success,
+.public-booking-unavailable,
+.public-booking-loading {
+  background: #111316 !important;
+  border-color: #262b31 !important;
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.26) !important;
+  backdrop-filter: none !important;
+}
+
+.public-professional-avatar,
+.public-section-title > span {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  box-shadow: none !important;
+}
+
+.public-professional-card > span,
+.public-booking-heading > span,
+.public-professional-details svg,
+.public-service-price {
+  color: #2dd4bf !important;
+}
+
+.public-professional-details,
+.public-booking-section {
+  border-color: #262b31 !important;
+}
+
+.public-booking-heading {
+  background: #121519 !important;
+  border-color: #262b31 !important;
+}
+
+.public-service-option,
+.public-date-input,
+.public-client-grid input,
+.public-client-grid textarea {
+  color: #e8edf0 !important;
+  background: #15181c !important;
+  border-color: #2a3036 !important;
+}
+
+.public-service-option:hover {
+  border-color: #37625d !important;
+}
+
+.public-service-option.selected {
+  background: #142622 !important;
+  border-color: #2f746a !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.06) !important;
+}
+
+.public-service-icon {
+  color: #6ee7d5 !important;
+  background: #15302c !important;
+}
+
+.public-date-input:focus,
+.public-client-grid input:focus,
+.public-client-grid textarea:focus {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08) !important;
+}
+
+.public-slots-grid button {
+  color: #a7f3d0 !important;
+  background: #142421 !important;
+  border-color: #28534e !important;
+}
+
+.public-slots-grid button:hover,
+.public-slots-grid button.selected {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border-color: #2dd4bf !important;
+  box-shadow: none !important;
+}
+
+.public-booking-summary {
+  background: #142421 !important;
+  border-color: #28534e !important;
+}
+
+.public-booking-submit {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  box-shadow: 0 10px 22px rgba(20, 184, 166, 0.14) !important;
+}
+
+.public-booking-notice {
+  color: #fcd34d !important;
+  background: rgba(120, 53, 15, 0.14) !important;
+  border-color: rgba(245, 158, 11, 0.24) !important;
+}
+
+.public-booking-error {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+/* ==========================
+   GERENCIAMENTO DO AGENDAMENTO
+========================== */
+.booking-management-page {
+  min-height: 100dvh !important;
+  color: #f3f6f8 !important;
+  background: #090a0c !important;
+}
+
+.booking-management-shape {
+  display: none !important;
+}
+
+.booking-management-page .brand-name,
+.booking-management-header h1,
+.booking-management-details strong,
+.booking-management-summary strong,
+.booking-reschedule-panel h2,
+.booking-reschedule-panel > label,
+.booking-management-modal h2,
+.booking-management-error-state h1 {
+  color: #f3f6f8 !important;
+}
+
+.booking-management-topbar > span,
+.booking-management-header > span,
+.booking-management-details small,
+.booking-management-notes small,
+.booking-management-summary span,
+.booking-management-notes p,
+.booking-reschedule-panel p,
+.booking-reschedule-feedback,
+.booking-management-cancelled-note,
+.booking-management-centered,
+.booking-management-modal p {
+  color: #8f99a5 !important;
+}
+
+.booking-management-card,
+.booking-management-centered,
+.booking-reschedule-panel,
+.booking-management-modal {
+  background: #111316 !important;
+  border-color: #262b31 !important;
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.26) !important;
+  backdrop-filter: none !important;
+}
+
+.booking-management-header {
+  background: #121519 !important;
+  border-color: #262b31 !important;
+}
+
+.booking-management-header > p {
+  color: #2dd4bf !important;
+}
+
+.booking-management-status {
+  color: #a7f3d0 !important;
+  background: #142421 !important;
+  border-color: #28534e !important;
+}
+
+.booking-management-status.confirmed,
+.booking-management-status.completed {
+  color: #6ee7d5 !important;
+  background: rgba(20, 184, 166, 0.12) !important;
+  border-color: rgba(45, 212, 191, 0.24) !important;
+}
+
+.booking-management-status.cancelled,
+.booking-management-status.no_show {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.14) !important;
+  border-color: rgba(239, 68, 68, 0.24) !important;
+}
+
+.booking-management-details article,
+.booking-management-notes,
+.booking-management-summary,
+.booking-reschedule-panel input,
+.booking-reschedule-slots > button {
+  color: #e8edf0 !important;
+  background: #15181c !important;
+  border-color: #2a3036 !important;
+}
+
+.booking-management-icon.blue,
+.booking-management-icon.green,
+.booking-management-icon.purple,
+.booking-management-icon.orange,
+.booking-reschedule-panel > header > span {
+  color: #6ee7d5 !important;
+  background: #15302c !important;
+}
+
+.booking-management-summary {
+  background: #142421 !important;
+  border-color: #28534e !important;
+}
+
+.booking-management-secondary {
+  color: #a7f3d0 !important;
+  background: #142421 !important;
+  border-color: #28534e !important;
+}
+
+.booking-management-primary {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  box-shadow: 0 10px 22px rgba(20, 184, 166, 0.14) !important;
+}
+
+.booking-management-danger {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.14) !important;
+  border-color: rgba(239, 68, 68, 0.24) !important;
+}
+
+.booking-reschedule-panel input:focus {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08) !important;
+}
+
+.booking-reschedule-slots > button.selected {
+  color: #061411 !important;
+  background: #2dd4bf !important;
+  border-color: #2dd4bf !important;
+}
+
+.booking-reschedule-panel > footer {
+  border-color: #262b31 !important;
+}
+
+.booking-management-modal-close {
+  color: #8f99a5 !important;
+}
+
+.booking-management-modal-icon {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.14) !important;
+}
+
+.booking-management-message.success {
+  color: #6ee7d5 !important;
+  background: rgba(13, 78, 74, 0.18) !important;
+  border-color: rgba(45, 212, 191, 0.22) !important;
+}
+
+.booking-management-message.error {
+  color: #fca5a5 !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+
+@media (max-width: 620px) {
+  .public-booking-page,
+  .booking-management-page {
+    padding: 16px !important;
+  }
+}
