@@ -24,6 +24,10 @@ https://agendapro-umber.vercel.app
 
 ![Tela de login do AgendaPro](docs/screenshots/login.webp)
 
+### Agendamento público
+
+![Página pública de agendamento do AgendaPro](docs/screenshots/public-booking.jpg)
+
 ## Principais funcionalidades
 
 - Autenticação com login, cadastro, recuperação e redefinição de senha
