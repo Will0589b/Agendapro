@@ -10,6 +10,20 @@ Aplicação em produção:
 
 https://agendapro-umber.vercel.app
 
+## Interface
+
+### Visão geral
+
+![Dashboard do AgendaPro](docs/screenshots/dashboard.webp)
+
+### Agenda
+
+![Tela de agendamentos do AgendaPro](docs/screenshots/agenda.webp)
+
+### Login
+
+![Tela de login do AgendaPro](docs/screenshots/login.webp)
+
 ## Principais funcionalidades
 
 - Autenticação com login, cadastro, recuperação e redefinição de senha
@@ -52,6 +66,8 @@ https://agendapro-umber.vercel.app
 
 ```text
 AgendaPro/
+├── docs/
+│   └── screenshots/
 ├── frontend/
 │   ├── src/
 │   │   ├── assets/
