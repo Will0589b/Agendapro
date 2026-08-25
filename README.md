@@ -14,19 +14,19 @@ https://agendapro-umber.vercel.app
 
 ### Visão geral
 
-![Dashboard do AgendaPro](docs/screenshots/dashboard.webp)
+![Dashboard do AgendaPro](docs/screenshots/dashboard.png)
 
 ### Agenda
 
-![Tela de agendamentos do AgendaPro](docs/screenshots/agenda.webp)
+![Tela de agendamentos do AgendaPro](docs/screenshots/agenda.png)
 
 ### Login
 
-![Tela de login do AgendaPro](docs/screenshots/login.webp)
+![Tela de login do AgendaPro](docs/screenshots/login.png)
 
 ### Agendamento público
 
-![Página pública de agendamento do AgendaPro](docs/screenshots/public-booking.jpg)
+![Página pública de agendamento do AgendaPro](docs/screenshots/public-booking.png)
 
 ## Principais funcionalidades
 
