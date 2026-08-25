@@ -1,0 +1,239 @@
+/* AgendaPro — Agenda dark premium layer */
+
+.dashboard .appointments-page {
+  color: #e8edf0 !important;
+}
+
+.dashboard .appointments-eyebrow {
+  color: #2dd4bf !important;
+}
+
+.dashboard .appointments-header h2 {
+  color: #f5f7f8 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.dashboard .appointments-header p,
+.dashboard .appointments-loading,
+.dashboard .appointment-title-row p,
+.dashboard .appointment-details > span,
+.dashboard .appointment-updating,
+.dashboard .appointment-notes {
+  color: #9aa3ad !important;
+}
+
+.dashboard .appointments-primary-button {
+  color: #061411 !important;
+  background: #31c7b8 !important;
+  border: 1px solid #49d4c6 !important;
+  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.12) !important;
+}
+
+.dashboard .appointments-primary-button:hover:not(:disabled) {
+  background: #3bd0c0 !important;
+  box-shadow: 0 14px 28px rgba(20, 184, 166, 0.17) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dashboard .appointments-error {
+  color: #fda4af !important;
+  background: rgba(127, 29, 29, 0.18) !important;
+  border-color: rgba(244, 63, 94, 0.28) !important;
+}
+
+.dashboard .appointments-loading,
+.dashboard .appointments-empty {
+  background: #111316 !important;
+  border-color: #24282d !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dashboard .appointments-empty-icon {
+  color: #2dd4bf !important;
+  background: #152725 !important;
+}
+
+.dashboard .appointments-empty h3 {
+  color: #f3f6f8 !important;
+}
+
+.dashboard .appointments-empty p {
+  color: #8e98a4 !important;
+}
+
+.dashboard .appointment-card {
+  background: #111316 !important;
+  border-color: #252a30 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18) !important;
+}
+
+.dashboard .appointment-card:hover {
+  border-color: rgba(45, 212, 191, 0.26) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dashboard .appointment-date-box {
+  color: #2dd4bf !important;
+  background: #0f1717 !important;
+  border-color: #26302f !important;
+}
+
+.dashboard .appointment-date-box strong,
+.dashboard .appointment-title-row h3 {
+  color: #f1f5f7 !important;
+}
+
+.dashboard .appointment-date-box > span {
+  color: #47d8c8 !important;
+}
+
+.dashboard .appointment-details > span:nth-child(2) {
+  color: #54d8c9 !important;
+}
+
+.dashboard .appointment-notes {
+  background: #15181c !important;
+  border-left-color: #36504d !important;
+}
+
+.dashboard .appointment-actions {
+  border-top-color: #242a30 !important;
+}
+
+.dashboard .appointment-status.scheduled {
+  color: #93c5fd !important;
+  background: rgba(37, 99, 235, 0.14) !important;
+}
+
+.dashboard .appointment-status.confirmed,
+.dashboard .appointment-status.completed {
+  color: #6ee7d5 !important;
+  background: rgba(20, 184, 166, 0.14) !important;
+}
+
+.dashboard .appointment-status.cancelled {
+  color: #fda4af !important;
+  background: rgba(190, 24, 93, 0.14) !important;
+}
+
+.dashboard .appointment-status.no_show {
+  color: #fbbf24 !important;
+  background: rgba(146, 64, 14, 0.18) !important;
+}
+
+.dashboard .appointment-action {
+  box-shadow: none !important;
+}
+
+.dashboard .appointment-action.confirm {
+  color: #93c5fd !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+  border-color: rgba(96, 165, 250, 0.24) !important;
+}
+
+.dashboard .appointment-action.complete {
+  color: #6ee7d5 !important;
+  background: rgba(20, 184, 166, 0.1) !important;
+  border-color: rgba(45, 212, 191, 0.24) !important;
+}
+
+.dashboard .appointment-action.no-show {
+  color: #fbbf24 !important;
+  background: rgba(146, 64, 14, 0.13) !important;
+  border-color: rgba(251, 191, 36, 0.22) !important;
+}
+
+.dashboard .appointment-action.cancel {
+  color: #fda4af !important;
+  background: rgba(190, 24, 93, 0.1) !important;
+  border-color: rgba(244, 63, 94, 0.22) !important;
+}
+
+.dashboard .appointment-action.edit {
+  color: #b6c0ca !important;
+  background: #15181c !important;
+  border-color: #31373e !important;
+}
+
+.dashboard .appointment-action.edit:hover {
+  color: #6ee7d5 !important;
+  background: #162421 !important;
+  border-color: #28534e !important;
+}
+
+.dashboard .appointment-modal-backdrop {
+  background: rgba(3, 5, 7, 0.72) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.dashboard .appointment-modal {
+  background: #111316 !important;
+  border-color: #2b3036 !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.48) !important;
+}
+
+.dashboard .appointment-modal-header {
+  border-bottom-color: #262b31 !important;
+}
+
+.dashboard .appointment-modal-header h3,
+.dashboard .appointment-form label {
+  color: #edf2f4 !important;
+}
+
+.dashboard .appointment-modal-close {
+  color: #9aa4af !important;
+  background: #171a1e !important;
+  border-color: #2d3339 !important;
+}
+
+.dashboard .appointment-modal-close:hover {
+  color: #fda4af !important;
+  background: rgba(127, 29, 29, 0.16) !important;
+  border-color: rgba(244, 63, 94, 0.26) !important;
+}
+
+.dashboard .appointment-form input,
+.dashboard .appointment-form select,
+.dashboard .appointment-form textarea {
+  color: #edf2f4 !important;
+  background: #15181c !important;
+  border-color: #2d3339 !important;
+  color-scheme: dark;
+}
+
+.dashboard .appointment-form input::placeholder,
+.dashboard .appointment-form textarea::placeholder {
+  color: #68727e !important;
+}
+
+.dashboard .appointment-form input:focus,
+.dashboard .appointment-form select:focus,
+.dashboard .appointment-form textarea:focus {
+  border-color: #2dd4bf !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.09) !important;
+}
+
+.dashboard .appointment-period-preview {
+  color: #7de8db !important;
+  background: #142522 !important;
+  border-color: #28534e !important;
+}
+
+.dashboard .appointment-cancel-form-button {
+  color: #aeb8c2 !important;
+  background: #15181c !important;
+  border-color: #31373e !important;
+}
+
+.dashboard .appointment-cancel-form-button:hover:not(:disabled) {
+  color: #f1f5f7 !important;
+  background: #1b1f24 !important;
+}
+
+@media (max-width: 620px) {
+  .dashboard .appointment-date-box {
+    border-bottom-color: #26302f !important;
+  }
+}
