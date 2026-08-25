@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import './pages/DashboardPremium.css'
 import './pages/AppointmentsPremium.css'
+import './pages/AgendaProPremium.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
