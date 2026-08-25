@@ -4,7 +4,7 @@
   min-height: 100dvh !important;
   color: #f4f7f8 !important;
   background:
-    radial-gradient(circle at 88% 8%, rgba(20, 184, 166, 0.07), transparent 28%),
+    radial-gradient(circle at 88% 8%, rgba(20, 184, 166, 0.055), transparent 28%),
     #090a0c !important;
 }
 
@@ -55,7 +55,7 @@
 .dashboard .notification-panel-header > div > span,
 .dashboard .notification-item-content > span,
 .dashboard .notification-item-content small {
-  color: #858f9b !important;
+  color: #9aa4af !important;
 }
 
 .dashboard .dashboard-nav-item {
@@ -70,8 +70,8 @@
 
 .dashboard .dashboard-nav-item.active {
   color: #dffbf6 !important;
-  background: #162b29 !important;
-  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.24) !important;
+  background: #13221f !important;
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.18) !important;
 }
 
 .dashboard .dashboard-nav-item.active svg {
@@ -112,14 +112,15 @@
 }
 
 .dashboard .primary-dashboard-button {
-  color: #061411 !important;
-  background: #2dd4bf !important;
-  border: 1px solid #42dcc9 !important;
-  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.15) !important;
+  color: #dffbf6 !important;
+  background: #137d72 !important;
+  border: 1px solid #1a9689 !important;
+  box-shadow: 0 10px 24px rgba(20, 184, 166, 0.11) !important;
 }
 
 .dashboard .primary-dashboard-button:hover {
-  background: #40dac6 !important;
+  background: #159386 !important;
+  box-shadow: 0 12px 26px rgba(20, 184, 166, 0.16) !important;
 }
 
 .dashboard .summary-card,
@@ -131,11 +132,18 @@
 }
 
 .dashboard .summary-card::after {
-  background: rgba(45, 212, 191, 0.035) !important;
+  background: rgba(45, 212, 191, 0.018) !important;
 }
 
 .dashboard .summary-card:hover {
   border-color: rgba(45, 212, 191, 0.28) !important;
+}
+
+.dashboard .summary-information > span {
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+  line-height: 1.25 !important;
 }
 
 .dashboard .summary-icon.blue,
@@ -165,15 +173,26 @@
 
 .dashboard .quick-action-arrow,
 .dashboard .dashboard-upcoming-item > svg {
-  color: #66717d !important;
+  color: #74808c !important;
 }
 
 .dashboard .dashboard-upcoming-date {
   color: #2dd4bf !important;
 }
 
+.dashboard .dashboard-upcoming-date strong,
+.dashboard .dashboard-upcoming-data strong {
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.dashboard .dashboard-upcoming-date small,
+.dashboard .dashboard-upcoming-data small {
+  color: #a6afb9 !important;
+}
+
 .dashboard .dashboard-upcoming-status.scheduled {
-  color: #93c5fd !important;
+  color: #9ec5ff !important;
   background: rgba(37, 99, 235, 0.14) !important;
 }
 
